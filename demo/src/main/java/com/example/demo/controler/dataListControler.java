@@ -22,12 +22,11 @@ public class dataListControler {
     @RequestMapping(method = RequestMethod.GET,value = "/index")
     public ArrayList<dataList> getdata(Model model){
         ArrayList<dataList> data=datalistservices.getdata();
-
         model.addAttribute("data",data);
                 return data;
     }
 
-    @RequestMapping(method = RequestMethod.POST,value = "/index")
+    @RequestMapping(method = RequestMethod.POST,value = "/create")
     public String createNewPost(dataList newPost)
     {
         datalistservices.createPost(newPost);

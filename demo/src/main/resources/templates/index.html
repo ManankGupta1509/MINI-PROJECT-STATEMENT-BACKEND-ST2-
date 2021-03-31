@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head th:fragment="site-head">
     <meta charset="UTF-8">
     <title>ST3-Mini Project</title>
-    <link rel="stylesheet" href="Styles/index.css">
-    <script src="scripts/index.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="static/index.css">
+    <script src="static/index.js" type="text/javascript"></script>
 </head>
 <body>
 
@@ -13,6 +13,7 @@
 
 <div id="view">
     <hr>
+    <form method="post" th:object="${dataList}" th:action="@{/create}">
     <table>
         <tr>
         <td><label for="Name">Name:</label></td>
@@ -20,17 +21,17 @@
         </tr>
         <tr>
             <td> <label for="mob_no">Mob.no:</label></td>
-            <td><input type="text" id="mob_no" name="mob_no" minlength="10"></td>
+            <td><input type="text" id="mob_no" name="mobileNumber" minlength="10"></td>
         </tr>
         <tr>
-            <td><label for="email">Email Id:</label></td>
-            <td><input type="email" id="email" name="email"></td>
+            <td><label for="mail">Email Id:</label></td>
+            <td><input type="email" id="mail" name="email"></td>
 
         </tr>
         <tr>
-            <td colspan="2" align="center"> <input type="submit" value="Submit" onclick="ADDuser()"></td>
+            <td colspan="2" align="center"> <input type="submit" value="Submit" th:onclick="@{/create}"></td>
         </tr>
-    </table>
+    </table></form>
 </div>
 <hr>
 <div id="result_div">
@@ -40,6 +41,18 @@
             <td>Mob No:</td>
             <td>Email:</td>
         </tr>
+            <main id="datalist">
+                <datalist th:each="p : ${datalist}">
+                    <td th:text="${p.name}"></td>
+                    <td th:text="${p.mobileNumber}"></td>
+                    <td th:field="${p.mail}"></td>
+                    <td><form th:action="@{/delete(postId=${p.id})}" th:method="delete">
+                        <input type="submit" value="DELETE" />
+                    </form>
+                    </td>
+
+        </datalist>
+            </main>
     </table>
 </div>
 </div>
