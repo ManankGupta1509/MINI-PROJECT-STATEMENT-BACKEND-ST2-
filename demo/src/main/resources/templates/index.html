@@ -25,7 +25,7 @@
         </tr>
         <tr>
             <td><label for="mail">Email Id:</label></td>
-            <td><input type="email" id="mail" name="email"></td>
+            <td><input type="email" id="mail" name="mail"></td>
 
         </tr>
         <tr>
@@ -46,7 +46,7 @@
                     <tr>
                     <td><p th:text="${p.name}"></p></td>
                     <td><p th:text="${p.mobileNumber}"></p></td>
-                    <td><p th:field="${p.mail}"></p></td>
+                    <td><p th:text="${p.mail}"></p></td>
                     <td><form th:action="@{/delete(postId=${p.id})}" th:method="delete">
                         <input type="submit" value="DELETE" />
                     </form></td>
