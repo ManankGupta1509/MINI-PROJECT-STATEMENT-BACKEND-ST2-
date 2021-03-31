@@ -29,7 +29,7 @@
 
         </tr>
         <tr>
-            <td colspan="2" align="center"> <input type="submit" value="Submit" th:onclick="@{/create}"></td>
+            <td colspan="2" align="center"> <input type="submit" value="Submit" th:onclick="@{/create}" th:method="post"></td>
         </tr>
     </table></form>
 </div>
@@ -41,17 +41,17 @@
             <td>Mob No:</td>
             <td>Email:</td>
         </tr>
-            <main id="datalist">
-                <datalist th:each="p : ${datalist}">
-                    <td th:text="${p.name}"></td>
-                    <td th:text="${p.mobileNumber}"></td>
-                    <td th:field="${p.mail}"></td>
+            <main id="datalist" >
+                <dataList th:each="p : ${datalist}" th:method="get">
+                    <tr>
+                    <td><p th:text="${p.name}"></p></td>
+                    <td><p th:text="${p.mobileNumber}"></p></td>
+                    <td><p th:field="${p.mail}"></p></td>
                     <td><form th:action="@{/delete(postId=${p.id})}" th:method="delete">
                         <input type="submit" value="DELETE" />
-                    </form>
-                    </td>
-
-        </datalist>
+                    </form></td>
+                    </tr>
+        </dataList>
             </main>
     </table>
 </div>

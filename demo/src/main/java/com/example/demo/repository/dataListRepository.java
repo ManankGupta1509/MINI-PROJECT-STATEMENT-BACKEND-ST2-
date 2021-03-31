@@ -2,9 +2,6 @@ package com.example.demo.repository;
 
 import com.example.demo.model.dataList;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.persistence.*;
 import java.util.ArrayList;
